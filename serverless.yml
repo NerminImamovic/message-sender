@@ -1,0 +1,20 @@
+service: message-sender
+frameworkVersion: '1'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - "sns:*"
+      Resource:
+        - "*"
+
+functions:
+  sendMessage:
+    handler: handler.sendMessage
+    events:
+      - eventBridge:
+          # enabled: false
+          schedule: rate(2 days)
