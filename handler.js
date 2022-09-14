@@ -17,7 +17,7 @@ module.exports.sendMessage = (event, context) => {
 
   sendSMSPromise
     .then((data) => {
-      console.log("SMS successfully sent. ", JSON.stringify(data));    
+      console.log("SMS successfully sent.", JSON.stringify(data));    
     })
     .catch((err) => {
       console.error(err, err.stack);
